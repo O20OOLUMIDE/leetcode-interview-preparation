@@ -1,0 +1,45 @@
+# Roman to Integer problem
+
+Roman_values = {
+    "I": 1,
+    "V": 5,
+    "X": 10,
+    "L": 50,
+    "C": 100,
+    "D": 500,
+    "M": 1000
+}
+
+# Subroutine to convert from Roman to an Integer
+def roman_converter(s):
+    if not 1 <= len(s) <= 15:
+        print("Error, length needs to be in between 1 - 15")
+
+    total = 0
+    counter = 0
+    
+    for character in s:
+        number = Roman_values[character]
+
+        if counter < len(s) - 1:
+            next_number = Roman_values[s[counter + 1]]
+
+            if number < next_number:
+                total = total - number
+            else:
+                total = total + number
+
+        else:
+            total = total + number
+
+        counter += 1
+
+    return total
+                
+        
+    
+    
+# Main program
+s = "VII"
+integer = roman_converter(s)
+print(f"{s} is equal to {integer}") 
