@@ -1,0 +1,30 @@
+# Longest common prefix
+
+# subroutine to return the longest common prefix between words
+def longest_prefix(array):
+    if len(array) == 0:
+        return ""
+    
+    prefix = ""
+    shortest_word = min(len(word) for word in array)
+
+    for i in range(shortest_word):
+        letter = array[0][i]
+        
+        for word in array:
+            if word[i].lower() != letter.lower():
+                return prefix
+            
+        prefix += letter
+
+    return prefix
+
+
+# Main program
+array = ["flower", "flow", "flight"]
+answer = longest_prefix(array)
+
+if answer == "":
+    print("There is no common prefix among the input strings")
+else:
+    print(f"The longest common prefix among the input strings is: {answer}") 
