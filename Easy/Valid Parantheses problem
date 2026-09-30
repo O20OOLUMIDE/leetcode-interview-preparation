@@ -1,0 +1,28 @@
+# Valid Parantheses problem
+
+# Subroutine to return whether a string inputted is valid according to set of predetermined rules
+def isValid(s):
+    stack = []
+    brackets = {")": "(", "]": "[", "}": "{"}
+
+    for character in s:
+        if character in "([{":
+            stack.append(character)
+
+        elif character in ")]}":
+            if not stack:
+                return False
+
+            if stack[-1] != brackets[character]:
+                return False
+
+            stack.pop()
+
+    return len(stack) == 0
+
+# Main program
+s = input("Enter the string you want to check the validity of: ").strip()
+answer = isValid(s)
+
+print(f"The validity of the string is: {answer}")
+                
